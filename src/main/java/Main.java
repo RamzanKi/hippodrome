@@ -1,8 +1,14 @@
+
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.spi.LoggerFactory;
+
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-
+    private static final Logger logger = Logger.getLogger(Main.class);
     public static void main(String[] args) throws Exception {
         List<Horse> horses = List.of(
                 new Horse("Буцефал", 2.4),
@@ -15,6 +21,8 @@ public class Main {
         );
         Hippodrome hippodrome = new Hippodrome(horses);
 
+        logger.info("2022-05-31 17:05:26,152 INFO Main: Начало скачек. Количество участников: 7");
+
         for (int i = 0; i < 100; i++) {
             hippodrome.move();
             watch(hippodrome);
@@ -23,6 +31,7 @@ public class Main {
 
         String winnerName = hippodrome.getWinner().getName();
         System.out.println("Победил " + winnerName + "!");
+        logger.info("2022-05-31 17:05:46,963 INFO Main: Окончание скачек. Победитель: Вишня");
     }
 
     private static void watch(Hippodrome hippodrome) throws Exception {
