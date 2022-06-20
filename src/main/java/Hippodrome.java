@@ -1,7 +1,6 @@
 
-
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,7 +9,7 @@ import java.util.List;
 import static java.util.Objects.isNull;
 
 public class Hippodrome {
-    private static final Logger logger = Logger.getLogger(Hippodrome.class);
+    private static final Logger logger = LogManager.getLogger(Hippodrome.class);
     private final List<Horse> horses;
 
     public Hippodrome(List<Horse> horses) {
