@@ -80,13 +80,14 @@ public class HorseTest {
 
 
     }
-    @Test
-    void moveTestCheckExpression () {
+    @ParameterizedTest
+    @ValueSource(doubles = {1.0, 3.0, 5.0})
+    void moveTestCheckExpression (Double argument) {
         try (MockedStatic<Horse> mockHorse = Mockito.mockStatic(Horse.class)) {
-            mockHorse.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(1.0);
+            mockHorse.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(argument);
             Horse h = new Horse("a", 31, 4);
             h.move();
-            assertEquals(35.0, h.getDistance());
+            assertEquals(4+31*argument, h.getDistance());
         }
     }
 
