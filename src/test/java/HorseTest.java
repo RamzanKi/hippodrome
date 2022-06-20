@@ -78,13 +78,17 @@ public class HorseTest {
             mockHorse.verify(() -> Horse.getRandomDouble(0.2, 0.9));
         }
 
+
+
+    }
+    @Test
+    void moveTestCheckExpression () {
         try (MockedStatic<Horse> mockHorse = Mockito.mockStatic(Horse.class)) {
             Horse h = new Horse("a", 1, 4);
             h.move();
             mockHorse.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(1.0);
             assertEquals(35.0, h.getDistance()+31*Horse.getRandomDouble(0.2, 0.9));
         }
-
     }
 
 }
